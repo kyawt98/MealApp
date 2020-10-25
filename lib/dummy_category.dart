@@ -135,8 +135,8 @@ const DAMMY_MEAL = const [
     isVegetarian: false,
   ),
   Meal(
-    id: 'm',
-    categories: ['c3'],
+    id: 'm4',
+    categories: ['c6'],
     title: 'Chicken Curry',
     imgUrl:
     'https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-908515_10-0551430.jpg?quality=90&webp=true&resize=300,272',

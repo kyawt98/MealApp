@@ -1,5 +1,6 @@
-import './category_meals_scream.dart';
-import './categories_screen.dart';
+import './screens/meal_detail_screen.dart';
+import 'screens/category_meals_scream.dart';
+import 'screens/categories_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -22,10 +23,15 @@ class MyApp extends StatelessWidget {
               body2: TextStyle(
                 color: Color.fromRGBO(20, 51, 51, 1),
               ),
-              title: TextStyle(fontSize: 20, fontFamily: 'OpenSans'))),
+              title: TextStyle(fontSize: 20, fontFamily: 'OpenSans', fontWeight: FontWeight.bold))),
+      initialRoute: '/',
       routes: {
         '/' : (ctx) => CategoriesScreen(),
-        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen()
+        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+      },
+      onUnknownRoute: (settings){
+        return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
       },
     );
   }

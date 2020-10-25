@@ -1,6 +1,5 @@
-import 'package:chapter_7_meal_app/category_meals_scream.dart';
+import '../screens/category_meals_scream.dart';
 import 'package:flutter/material.dart';
-import './category_meals_scream.dart';
 
 class CategoryItem extends StatelessWidget {
   final String id;
