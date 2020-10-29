@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
+  final Function toggleFavourite;
+  final Function isMealFavourite;
+
+  MealDetailScreen(this.toggleFavourite, this.isMealFavourite);
 
   @override
   Widget build(BuildContext context) {
@@ -17,35 +21,41 @@ class MealDetailScreen extends StatelessWidget {
           children: <Widget>[
             imageSection('${selectMeal.imgUrl}'),
             titleSection('Ingredients', context),
-            buildContainer(ListView.builder(
-              itemBuilder: (ctx, index) => Card(
-                color: Theme.of(context).accentColor,
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Text(selectMeal.ingredients[index]),
-                ),
-              ),
-              itemCount: selectMeal.ingredients.length,
-            ),),
-            titleSection('Steps', context),
-            buildContainer(ListView.builder(
-              itemBuilder: (ctx, index) => Column(
-                children: <Widget>[
-                  ListTile(
-                    leading: CircleAvatar(
-                      child: Text('# ${(index+1)}'),
-                    ),
-                    title:  Text(selectMeal.steps[index]),
+            buildContainer(
+              ListView.builder(
+                itemBuilder: (ctx, index) => Card(
+                  color: Theme.of(context).accentColor,
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text(selectMeal.ingredients[index]),
                   ),
-                  Divider(
-
-                  )
-                ],
+                ),
+                itemCount: selectMeal.ingredients.length,
               ),
-              itemCount: selectMeal.steps.length,
-            ),)
+            ),
+            titleSection('Steps', context),
+            buildContainer(
+              ListView.builder(
+                itemBuilder: (ctx, index) => Column(
+                  children: <Widget>[
+                    ListTile(
+                      leading: CircleAvatar(
+                        child: Text('# ${(index + 1)}'),
+                      ),
+                      title: Text(selectMeal.steps[index]),
+                    ),
+                    Divider()
+                  ],
+                ),
+                itemCount: selectMeal.steps.length,
+              ),
+            ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed:(){ toggleFavourite(mealId);},
+        child: Icon(isMealFavourite(mealId) ? Icons.star : Icons.star_border),
       ),
     );
   }
